@@ -3,11 +3,12 @@ CFLAGS = -Wall -Wextra -Wpedantic -std=c23 \
 	-I$$(brew --prefix gettext)/include \
 	-L$$(brew --prefix gettext)/lib \
 	-lintl
+PODIR = /usr/local/share/locale
 
 all: tiktok
 
 tiktok: main.c
-	$(CC) $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -DPODIR='"$(PODIR)"' -o $@ $<
 
 extract:
 	xgettext --from-code=UTF-8 -k_ -o po/messages.pot main.c
