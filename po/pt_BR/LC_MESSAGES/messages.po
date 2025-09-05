@@ -1,0 +1,41 @@
+# Portuguese translations for PACKAGE package.
+# Copyright (C) 2025 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Thomas Voss <mail@thomasvoss.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-05 15:43+0200\n"
+"PO-Revision-Date: 2025-09-05 16:12+0200\n"
+"Last-Translator: Thomas Voss <mail@thomasvoss.com>\n"
+"Language-Team: Brazilian Portuguese <ldpbr-"
+"translation@lists.sourceforge.net>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: main.c:30
+#, c-format
+msgid "Usage: %s [-h] [-i interval] [format]\n"
+msgstr "Utilização: %s [-h] [-i intervalo] [formato]\n"
+
+#: main.c:65
+#, c-format
+msgid ""
+"invalid interval ‘%s’\n"
+"Read the %s(1) manual page for valid intervals"
+msgstr ""
+"intervalo inválido “%s”\n"
+"Leia a página do manual do %s(1) para intervalos válidos"
+
+#: main.c:89 main.c:101
+msgid "failed to get the time"
+msgstr "não conseguiu obter o tempo"
+
+#: main.c:97
+msgid "buffer too small"
+msgstr "buffer pequeno demais"
