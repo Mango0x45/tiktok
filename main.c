@@ -24,7 +24,7 @@ int clock_nanosleep(clockid_t, int, const struct timespec *, struct timespec *);
 
 time_t syncs(time_t), syncm(time_t), synch(time_t);
 
-static void
+[[noreturn]] static void
 usage(const char *argv0, int code)
 {
 	fprintf(stderr, _("Usage: %s [-h] [-i interval] [format]\n"), argv0);
