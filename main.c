@@ -35,8 +35,8 @@ int
 main(int argc, char **argv)
 {
 	setlocale(LC_ALL, "");
-	bindtextdomain("messages", PODIR);
-	textdomain("messages");
+	bindtextdomain("tiktok", PODIR);
+	textdomain("tiktok");
 
 	char interval = 's';
 	const char *argv0 = basename(argv[0]);

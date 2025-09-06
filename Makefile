@@ -11,8 +11,8 @@ tiktok: main.c
 	$(CC) $(CFLAGS) -DPODIR='"$(PODIR)"' -o $@ $<
 
 extract:
-	xgettext --from-code=UTF-8 -k_ -o po/messages.pot main.c
-	find po -name '*.po' -exec msgmerge {} po/messages.pot -o {} \;
+	xgettext --from-code=UTF-8 -k_ -o po/tiktok.pot main.c
+	find po -name '*.po' -exec msgmerge {} po/tiktok.pot -o {} \;
 
 translations:
 	find po -name '*.po' | while read -r file; do msgfmt "$$file" -o "$${file%po}mo"; done
