@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-05 15:43+0200\n"
+"POT-Creation-Date: 2025-09-06 15:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: main.c:30
+#: main.c:31
 #, c-format
 msgid "Usage: %s [-h] [-i interval] [format]\n"
 msgstr ""
 
-#: main.c:65
+#: main.c:66
 #, c-format
 msgid ""
 "invalid interval ‘%s’\n"
 "Read the %s(1) manual page for valid intervals"
 msgstr ""
 
-#: main.c:89 main.c:101
+#: main.c:90 main.c:100
 msgid "failed to get the time"
 msgstr ""
 
-#: main.c:97
+#: main.c:96
 msgid "buffer too small"
 msgstr ""

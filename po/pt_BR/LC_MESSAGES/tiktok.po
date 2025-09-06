@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-05 15:43+0200\n"
+"POT-Creation-Date: 2025-09-06 15:47+0200\n"
 "PO-Revision-Date: 2025-09-05 16:12+0200\n"
 "Last-Translator: Thomas Voss <mail@thomasvoss.com>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: main.c:30
+#: main.c:31
 #, c-format
 msgid "Usage: %s [-h] [-i interval] [format]\n"
 msgstr "Utilização: %s [-h] [-i intervalo] [formato]\n"
 
-#: main.c:65
+#: main.c:66
 #, c-format
 msgid ""
 "invalid interval ‘%s’\n"
@@ -32,10 +32,10 @@ msgstr ""
 "intervalo inválido “%s”\n"
 "Leia a página do manual do %s(1) para intervalos válidos"
 
-#: main.c:89 main.c:101
+#: main.c:90 main.c:100
 msgid "failed to get the time"
 msgstr "não conseguiu obter o tempo"
 
-#: main.c:97
+#: main.c:96
 msgid "buffer too small"
 msgstr "buffer pequeno demais"
