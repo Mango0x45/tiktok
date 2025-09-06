@@ -85,12 +85,10 @@ main(int argc, char **argv)
 		: /* default */     syncs;
 
 	for (;;) {
-		struct timespec before, after;
-		if (clock_gettime(CLOCK_REALTIME, &before) == -1)
+		struct timespec now, then;
+		if (clock_gettime(CLOCK_REALTIME, &now) == -1)
 			warn(_("failed to get the time"));
-
-		time_t now = time(NULL);
-		struct tm *tm = localtime(&now);
+		struct tm *tm = localtime(&now.tv_sec);
 
 		char buf[256];
 		size_t n = strftime(buf, sizeof(buf), dfmt, tm);
@@ -98,13 +96,13 @@ main(int argc, char **argv)
 		   	warnx(_("buffer too small"));
 		puts(buf);
 
-		if (clock_gettime(CLOCK_REALTIME, &after) == -1)
+		if (clock_gettime(CLOCK_REALTIME, &then) == -1)
 			warn(_("failed to get the time"));
 
 		/* Duration of the clock formatting and printing */
 		struct timespec Δ = {
-			after.tv_sec  - before.tv_sec,
-			after.tv_nsec - before.tv_nsec,
+			then.tv_sec  - now.tv_sec,
+			then.tv_nsec - now.tv_nsec,
 		};
 		if (Δ.tv_nsec < 0) {
 			Δ.tv_nsec += NSEC_PER_SEC;
@@ -112,7 +110,7 @@ main(int argc, char **argv)
 		}
 
 		struct timespec rqtp = {
-			.tv_sec  = sync(after.tv_sec),
+			.tv_sec  = sync(then.tv_sec),
 			.tv_nsec = 0,
 		};
 
