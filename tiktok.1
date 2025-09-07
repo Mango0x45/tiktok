@@ -15,9 +15,9 @@ The
 .Nm
 utility is a CLI clock.
 It prints the date and time customizable via
-.Ar FORMAT
+.Ar format
 to the standard output at each
-.Ar INTERVAL .
+.Ar interval .
 .Nm
 is a synchronizing clock, meaning that it syncs to each interval.
 If the interval is set to minutes,
@@ -27,7 +27,7 @@ This makes is especially well-suited for usage in status bars and other
 places where you may want an accurate clock.
 .Pp
 The
-.Ar FORMAT
+.Ar format
 argument follows the same syntax as the
 .Xr strftime 3
 C-function,
@@ -41,6 +41,7 @@ Display help information by opening this manual page.
 .It Fl i Ar char , Fl Fl interval Ns = Ns Ar char
 Set the clock interval.
 The following intervals are supported:
+.Pp
 .Bl -tag -compact
 .It s
 seconds
