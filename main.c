@@ -29,7 +29,10 @@ time_t syncs(time_t), syncm(time_t), synch(time_t);
 [[noreturn]] static void
 usage(const char *argv0)
 {
-	fprintf(stderr, _("Usage: %s [-h] [-i interval] [format]\n"), argv0);
+	fprintf(stderr,
+	        _("Usage: %s [-i interval] [format]\n"
+	          "       %s -h\n"),
+	        argv0, argv0);
 	exit(EXIT_FAILURE);
 }
 

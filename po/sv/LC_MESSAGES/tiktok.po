@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-06 15:47+0200\n"
-"PO-Revision-Date: 2025-09-05 15:18+0200\n"
+"POT-Creation-Date: 2025-09-07 15:25+0200\n"
+"PO-Revision-Date: 2025-09-07 15:55+0200\n"
 "Last-Translator: Thomas Voss <mail@thomasvoss.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,12 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: main.c:31
+#: main.c:33
 #, c-format
-msgid "Usage: %s [-h] [-i interval] [format]\n"
-msgstr "Användning: %s [-h] [-i intervall] [format]\n"
+msgid ""
+"Usage: %s [-i interval] [format]\n"
+"       %s -h\n"
+msgstr ""
+"Användning: %s [-i intervall] [format]\n"
+"            %s -h\n"
 
-#: main.c:66
+#: main.c:71
 #, c-format
 msgid ""
 "invalid interval ‘%s’\n"
@@ -31,10 +35,10 @@ msgstr ""
 "ogiltigt intervall ”%s”\n"
 "Läs %s(1)-manualsidan för giltiga intervall"
 
-#: main.c:90 main.c:100
+#: main.c:95 main.c:105
 msgid "failed to get the time"
 msgstr "misslyckades med att få tiden"
 
-#: main.c:96
+#: main.c:101
 msgid "buffer too small"
 msgstr "bufferten är för liten"
