@@ -1,0 +1,76 @@
+.Dd September 7 2025
+.Dt TIKTOK 1
+.Os
+.Sh NAME
+.Nm tiktok
+.Nd synchronized cli clock
+.Sh SYNOPSIS
+.Nm
+.Op Fl i Ar interval
+.Op Ar format
+.Nm
+.Fl h
+.Sh DESCRIPTION
+The
+.Nm
+utility is a CLI clock.
+It prints the date and time customizable via
+.Ar FORMAT
+to the standard output at each
+.Ar INTERVAL .
+.Nm
+is a synchronizing clock, meaning that it syncs to each interval.
+If the interval is set to minutes,
+this means that even if the clock is started at 16:29:45 the time will be
+printed again 15 seconds later at 16:30:00.
+This makes is especially well-suited for usage in status bars and other
+places where you may want an accurate clock.
+.Pp
+The
+.Ar FORMAT
+argument follows the same syntax as the
+.Xr strftime 3
+C-function,
+and details on the syntax should be looked up in the afformentioned
+manual page.
+.Pp
+The options are as follows:
+.Bl -tag -width Ds
+.It Fl h , Fl Fl help
+Display help information by opening this manual page.
+.It Fl i Ar char , Fl Fl interval Ns = Ns Ar char
+Set the clock interval.
+The following intervals are supported:
+.Bl -tag -compact
+.It s
+seconds
+.It m
+minutes
+.It h
+hours
+.El
+.Pp
+When omitted the default interval is seconds.
+.El
+.Sh EXIT STATUS
+.Ex -std
+.Sh ENVIRONMENT
+.Bl -tag -width Ds
+.It Ev TZ
+The timezone to display the date and time of.
+.El
+.Sh EXAMPLES
+Get the date and time every second:
+.Pp
+.Dl $ tiktok '%F %T'
+.Pp
+Get the time (hours and minutes) and timezone in Stockholm, Sweden,
+updating every minute:
+.Pp
+.Dl $ TZ=Europe/Stockholm tiktok --interval=m '%H:%M %Z'
+.Sh SEE ALSO
+.Xr cal 1 ,
+.Xr date 1 ,
+.Xr strftime 3
+.Sh AUTHORS
+.An Thomas Voss Aq Mt mail@thomasvoss.com
