@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 #include <libintl.h>
 
@@ -26,10 +27,10 @@ int clock_nanosleep(clockid_t, int, const struct timespec *, struct timespec *);
 time_t syncs(time_t), syncm(time_t), synch(time_t);
 
 [[noreturn]] static void
-usage(const char *argv0, int code)
+usage(const char *argv0)
 {
 	fprintf(stderr, _("Usage: %s [-h] [-i interval] [format]\n"), argv0);
-	exit(code);
+	exit(EXIT_FAILURE);
 }
 
 int
@@ -55,7 +56,8 @@ main(int argc, char **argv)
 
 		switch (opt) {
 		case 'h':
-			usage(argv0, EXIT_SUCCESS);
+			execlp("man", "man", "1", argv0, nullptr);
+			err(EXIT_FAILURE, "execlp: man");
 		case 'i':
 			if (strlen(optarg) == 1) {
 				interval = *optarg;
@@ -66,7 +68,7 @@ main(int argc, char **argv)
 				_("invalid interval ‘%s’\nRead the %s(1) manual page for valid intervals"),
 				optarg, argv0);
 		default:
-			usage(argv0, EXIT_FAILURE);
+			usage(argv0);
 		}
 	}
 
@@ -74,7 +76,7 @@ main(int argc, char **argv)
 	argv += optind;
 
 	if (argc > 1)
-		usage(argv0, EXIT_FAILURE);
+		usage(argv0);
 	if (argc != 0)
 		dfmt = argv[0];
 
