@@ -176,6 +176,12 @@ install(void)
 	cmdput(cmd);
 	if (rv_(cmdexec(cmd)) != 0)
 		exit(rv);
+	strszero(&cmd);
+
+	strspushl(&cmd, "cp", "tiktok.1", mandir);
+	cmdput(cmd);
+	if (rv_(cmdexec(cmd)) != 0)
+		exit(rv);
 	strsfree(&cmd);
 }
 
