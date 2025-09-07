@@ -190,7 +190,8 @@ tiktok(void)
 {
 	struct strs cmd = {};
 	strspushenvl(&cmd, "CC", "cc");
-	strspushenvl(&cmd, "CFLAGS", "-Wall", "-Wextra", "-Wpedantic", "-std=c23");
+	strspushenvl(&cmd, "CFLAGS", "-Wall", "-Wextra", "-Wpedantic", "-std=c23",
+	             "-O3", "-pipe");
 
 	char buf[PATH_MAX];
 	const char *ev = getenv("PODIR");
