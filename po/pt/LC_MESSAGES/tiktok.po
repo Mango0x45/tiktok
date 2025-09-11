@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-07 15:25+0200\n"
-"PO-Revision-Date: 2025-09-07 15:56+0200\n"
+"POT-Creation-Date: 2025-09-11 10:53+0200\n"
+"PO-Revision-Date: 2025-09-11 10:55+0200\n"
 "Last-Translator: Thomas Voss <mail@thomasvoss.com>\n"
 "Language-Team: Portuguese <translation-team-pt@lists.sourceforge.net>\n"
 "Language: pt\n"
@@ -20,10 +20,10 @@ msgstr ""
 #: main.c:33
 #, c-format
 msgid ""
-"Usage: %s [-i interval] [format]\n"
+"Usage: %s [-i interval] [format ...]\n"
 "       %s -h\n"
 msgstr ""
-"Utilização: %s [-i intervalo] [formato]\n"
+"Utilização: %s [-i intervalo] [formato ...]\n"
 "            %s -h\n"
 
 #: main.c:71
@@ -35,10 +35,14 @@ msgstr ""
 "intervalo inválido «%s»\n"
 "Leia a página do manual do %s(1) para intervalos válidos"
 
-#: main.c:95 main.c:105
+#: main.c:97 main.c:121
 msgid "failed to get the time"
 msgstr "não conseguiu obter o tempo"
 
-#: main.c:101
+#: main.c:101 main.c:103 main.c:108
+msgid "failed to set the timezone"
+msgstr "não conseguiu definir o fuso horário"
+
+#: main.c:114
 msgid "buffer too small"
 msgstr "buffer demasiado pequeno"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-07 15:25+0200\n"
-"PO-Revision-Date: 2025-09-07 15:55+0200\n"
+"POT-Creation-Date: 2025-09-11 10:53+0200\n"
+"PO-Revision-Date: 2025-09-11 10:55+0200\n"
 "Last-Translator: Thomas Voss <mail@thomasvoss.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -20,10 +20,10 @@ msgstr ""
 #: main.c:33
 #, c-format
 msgid ""
-"Usage: %s [-i interval] [format]\n"
+"Usage: %s [-i interval] [format ...]\n"
 "       %s -h\n"
 msgstr ""
-"Användning: %s [-i intervall] [format]\n"
+"Användning: %s [-i intervall] [format ...]\n"
 "            %s -h\n"
 
 #: main.c:71
@@ -35,10 +35,14 @@ msgstr ""
 "ogiltigt intervall ”%s”\n"
 "Läs %s(1)-manualsidan för giltiga intervall"
 
-#: main.c:95 main.c:105
+#: main.c:97 main.c:121
 msgid "failed to get the time"
 msgstr "misslyckades med att få tiden"
 
-#: main.c:101
+#: main.c:101 main.c:103 main.c:108
+msgid "failed to set the timezone"
+msgstr "misslyckades med att ställa in tidszonen"
+
+#: main.c:114
 msgid "buffer too small"
 msgstr "bufferten är för liten"
