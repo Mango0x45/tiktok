@@ -219,6 +219,7 @@ tiktok(void)
 	char *dash_I = xmalloc(brewbufsz + sizeof("-I/include"));
 	char *dash_L = xmalloc(brewbufsz + sizeof("-L/lib"));
 
+    brewbuf[brewbufsz - 1] = 0;
 	sprintf(dash_I, "-I%s/include", brewbuf);
 	sprintf(dash_L, "-L%s/lib", brewbuf);
 
