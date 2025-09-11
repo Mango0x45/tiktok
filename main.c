@@ -30,7 +30,7 @@ time_t syncs(time_t), syncm(time_t), synch(time_t);
 usage(const char *argv0)
 {
 	fprintf(stderr,
-	        _("Usage: %s [-i interval] [format]\n"
+	        _("Usage: %s [-i interval] [format ...]\n"
 	          "       %s -h\n"),
 	        argv0, argv0);
 	exit(EXIT_FAILURE);
@@ -45,7 +45,7 @@ main(int argc, char **argv)
 
 	char interval = 's';
 	const char *argv0 = basename(argv[0]);
-	const char *dfmt = "%c", *optstr = "hi:";
+	const char *optstr = "hi:";
 	static struct option longopts[] = {
 		{"help",     no_argument,       nullptr, 'h'},
 		{"interval", required_argument, nullptr, 'i'},
@@ -78,10 +78,10 @@ main(int argc, char **argv)
 	argc -= optind;
 	argv += optind;
 
-	if (argc > 1)
-		usage(argv0);
-	if (argc != 0)
-		dfmt = argv[0];
+	if (argc == 0) {
+		argc = 1;
+		argv = (char *[]){"%c"};
+	}
 
 	time_t (*sync)(time_t) =
 		  interval == 's' ? syncs
@@ -95,11 +95,14 @@ main(int argc, char **argv)
 			warn(_("failed to get the time"));
 		struct tm *tm = localtime(&now.tv_sec);
 
-		char buf[256];
-		size_t n = strftime(buf, sizeof(buf), dfmt, tm);
-		if (n == 0)
-		   	warnx(_("buffer too small"));
-		puts(buf);
+		for (int i = 0; i < argc; i++) {
+			char buf[256];      /* TODO: Make dynamic */
+			size_t n = strftime(buf, sizeof(buf), argv[i], tm);
+			if (n == 0)
+				warnx(_("buffer too small"));
+			fputs(buf, stdout);
+		}
+		putchar('\n');
 
 		if (clock_gettime(CLOCK_REALTIME, &then) == -1)
 			warn(_("failed to get the time"));
