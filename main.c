@@ -107,11 +107,19 @@ main(int argc, char **argv)
 				if (putenv(argv[i]) == -1)
 					warn(_("failed to set the timezone"));
 			} else {
-				char buf[256];      /* TODO: Make dynamic */
+				static char *buf;
+				static size_t bufsz = 1024;
+				if (buf == nullptr && (buf = malloc(bufsz)) == nullptr)
+					err(EXIT_FAILURE, "malloc");
+
 				struct tm *tm = localtime(&now.tv_sec);
-				size_t n = strftime(buf, sizeof(buf), argv[i], tm);
-				if (n == 0)
-					warnx(_("buffer too small"));
+				size_t n = strftime(buf, bufsz, argv[i], tm);
+				while (n == 0) {
+					bufsz *= 2;
+					if ((buf = realloc(buf, bufsz)) == nullptr)
+						err(EXIT_FAILURE, "malloc");
+					n = strftime(buf, bufsz, argv[i], tm);
+				}
 				fputs(buf, stdout);
 			}
 		}
