@@ -89,18 +89,31 @@ main(int argc, char **argv)
 		: interval == 'h' ? synch
 		: /* default */     syncs;
 
+	const char *tzorig = getenv("TZ");
+
 	for (;;) {
 		struct timespec now, then;
 		if (clock_gettime(CLOCK_REALTIME, &now) == -1)
 			warn(_("failed to get the time"));
-		struct tm *tm = localtime(&now.tv_sec);
+
+		if (tzorig != nullptr) {
+			if (setenv("TZ", tzorig, true) == -1)
+				warn(_("failed to set the timezone"));
+		} else if (unsetenv("TZ") == -1)
+			warn(_("failed to set the timezone"));
 
 		for (int i = 0; i < argc; i++) {
-			char buf[256];      /* TODO: Make dynamic */
-			size_t n = strftime(buf, sizeof(buf), argv[i], tm);
-			if (n == 0)
-				warnx(_("buffer too small"));
-			fputs(buf, stdout);
+			if (strlen(argv[i]) >= 3 && memcmp("TZ=", argv[i], 3) == 0) {
+				if (putenv(argv[i]) == -1)
+					warn(_("failed to set the timezone"));
+			} else {
+				char buf[256];      /* TODO: Make dynamic */
+				struct tm *tm = localtime(&now.tv_sec);
+				size_t n = strftime(buf, sizeof(buf), argv[i], tm);
+				if (n == 0)
+					warnx(_("buffer too small"));
+				fputs(buf, stdout);
+			}
 		}
 		putchar('\n');
 
