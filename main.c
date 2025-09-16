@@ -44,7 +44,7 @@ main(int argc, char **argv)
 	textdomain("tiktok");
 
 	char interval = 's';
-	const char *argv0 = basename(argv[0]);
+	const char *argv0 = argv[0] = basename(argv[0]);
 	const char *optstr = "hi:";
 	static struct option longopts[] = {
 		{"help",     no_argument,       nullptr, 'h'},
