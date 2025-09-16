@@ -130,22 +130,11 @@ main(int argc, char **argv)
 		if (clock_gettime(CLOCK_REALTIME, &then) == -1)
 			warn(_("failed to get the time"));
 
-		/* Duration of the clock formatting and printing */
-		struct timespec Δ = {
-			then.tv_sec  - now.tv_sec,
-			then.tv_nsec - now.tv_nsec,
-		};
-		if (Δ.tv_nsec < 0) {
-			Δ.tv_nsec += NSEC_PER_SEC;
-			Δ.tv_sec--;
-		}
-
+		int rv;
 		struct timespec rqtp = {
 			.tv_sec  = sync(then.tv_sec),
 			.tv_nsec = 0,
 		};
-
-		int rv;
 		do
 			rv = clock_nanosleep(CLOCK_REALTIME, TIMER_ABSTIME, &rqtp, nullptr);
 		while (rv == -1 && errno == EINTR);
