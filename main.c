@@ -78,9 +78,11 @@ main(int argc, char **argv)
 	argc -= optind;
 	argv += optind;
 
+	char *default_args[] = {"%c"};
+
 	if (argc == 0) {
 		argc = 1;
-		argv = (char *[]){"%c"};
+		argv = default_args;
 	}
 
 	time_t (*sync)(time_t) =
